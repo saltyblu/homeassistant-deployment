@@ -1,0 +1,14 @@
+kind: Kustomization
+namespace: homeassistant
+
+commonLabels:
+  app.kubernetes.io/name: homeassistant
+  app.kubernetes.io/part-of: homeassistant
+
+
+resources:
+  - pvc.yaml
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+    #- ingress.yaml

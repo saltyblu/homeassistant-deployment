@@ -1,0 +1,5 @@
+---
+namespace: homeassistant
+
+resources:
+  - ../../app

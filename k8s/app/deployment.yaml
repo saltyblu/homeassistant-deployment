@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      volumes:
+        - name: ha-storage
+          persistentVolumeClaim:
+            claimName: homeassistant-storage
+        - name: ha-mysql
+          persistentVolumeClaim:
+            claimName: homeassistant-mysql
+      containers:
+        - image: ghcr.io/home-assistant/home-assistant:stable
+          name: home-assistant
+          volumeMounts:
+            - mountPath: "/config"
+              name: ha-storage
+        - image: mariadb:latest
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-recorder-pass
+                  key: password
+          volumeMounts:
+            - name: ha-mysql
+              mountPath: /var/lib/mysql
+        #---
+        #apiVersion: networking.k8s.io/v1
+        #kind: Ingress
+        #metadata:
+        #  name: homeassistant-ingress
+        #  namespace: homeassistant
+        #  annotations:
+        #    traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+        #    traefik.ingress.kubernetes.io/router.tls: 'true'
+        #spec:
+        #  rules:
+        #    - host: jeeves.harmony.arkane-systems.lan
+        #      http:
+        #        paths:
+        #          - pathType: Prefix
+        #            path: /
+        #            backend:
+        #              service:
+        #                name: homeassistant
+        #                port:
+        #                  number: 8123
+        #    - host: automation.arkane-systems.net
+        #      http:
+        #        paths:
+        #          - pathType: Prefix
+        #            path: /
+        #            backend:
+        #              service:
+        #                name: homeassistant
+        #                port:
+        #                  number: 8123
