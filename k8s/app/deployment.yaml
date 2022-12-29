@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - mountPath: "/config"
               name: ha-storage
-        - image: mariadb:latest
+        - image: mysql:latest
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
