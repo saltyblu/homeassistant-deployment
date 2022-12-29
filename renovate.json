@@ -1,6 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    "docker:enableMajor"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [ "docker" ],
+      "matchPackageNames": [ "mysql" ],
+      "versioning": "semver"
+    },
+    {
+      "matchDatasources": [ "docker" ],
+      "matchPackageNames": [ "home-assistant" ],
+      "versioning": "semver"
+    }
   ]
 }
