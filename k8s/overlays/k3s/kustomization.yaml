@@ -3,3 +3,16 @@ namespace: homeassistant
 
 resources:
   - ../../app
+
+patches:
+  - patch: |-
+      kind: not-important
+      metadata:
+        name: not-important
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              type: controller
+    target:
+      kind: (StatefulSet|Deployment|Job)
