@@ -15,4 +15,4 @@ patches:
             nodeSelector:
               type: cloud
     target:
-      kind: (StatefulSet|Deployment|Job)
+      kind: (StatefulSet|Deployment|Job|PersistentVolume)
