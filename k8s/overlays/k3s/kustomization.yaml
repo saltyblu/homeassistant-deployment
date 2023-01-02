@@ -13,6 +13,6 @@ patches:
         template:
           spec:
             nodeSelector:
-              type: controller
+              type: cloud
     target:
       kind: (StatefulSet|Deployment|Job)
