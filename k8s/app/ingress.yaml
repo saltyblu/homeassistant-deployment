@@ -10,7 +10,7 @@ metadata:
 
 spec:
   rules:
-    - host: blu-home.fritz.box
+    - host: blu-nuc.fritz.box
       http:
         paths:
           - path: /
