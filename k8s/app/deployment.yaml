@@ -17,7 +17,7 @@ spec:
     spec:
       volumes:
         - name: ha-storage
-          persistentVolumeClaim:
+          persistentVolumeClai:
             claimName: homeassistant-storage
         - name: ha-mysql
           persistentVolumeClaim:
