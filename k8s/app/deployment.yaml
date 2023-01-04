@@ -28,7 +28,7 @@ spec:
           volumeMounts:
             - mountPath: "/config"
               name: ha-storage
-        - image: mysql:8.0.31
+        - image: mysql:8.0.31 # {"$imagepolicy": "flux-system:homeassistant-msql"}
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
