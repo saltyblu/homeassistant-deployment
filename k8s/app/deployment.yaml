@@ -18,10 +18,10 @@ spec:
       volumes:
         - name: ha-storage
           persistentVolumeClai:
-            claimName: homeassistant-storage
+            claimName: ha-storage
         - name: ha-mysql
           persistentVolumeClaim:
-            claimName: homeassistant-mysql
+            claimName: ha-mysql
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2022.12.9 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
