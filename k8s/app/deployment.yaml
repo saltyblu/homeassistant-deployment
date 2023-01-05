@@ -23,7 +23,7 @@ spec:
           persistentVolumeClaim:
             claimName: ha-mysql
       containers:
-        - image: ghcr.io/home-assistant/home-assistant:2022.12.9 # {"$imagepolicy": "flux-system:homeassistant"}
+        - image: ghcr.io/home-assistant/home-assistant:2023.1.0 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
           volumeMounts:
             - mountPath: "/config"
