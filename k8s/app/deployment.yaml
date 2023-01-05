@@ -22,12 +22,19 @@ spec:
         - name: ha-mysql
           persistentVolumeClaim:
             claimName: ha-mysql
+        - name: dbus
+          hostPath:
+            path: /run/dbus
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2023.1.0 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
           volumeMounts:
             - name: ha-storage
               mountPath: /config
+            - name: dbus
+              mountPath: /run/dbus
+          securityContext:
+            privilege: true
         - image: mysql:8.0.31 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
           name: mysql
           env:
