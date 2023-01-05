@@ -19,4 +19,4 @@ spec:
               service:
                 name: homeassistant
                 port:
-                  number: 8321
+                  name: http
