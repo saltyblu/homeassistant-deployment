@@ -35,7 +35,7 @@ spec:
               mountPath: /run/dbus
           securityContext:
             privilege: true
-        - image: mysql:8.0.32 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
+        - image: mysql:8.0.33 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
