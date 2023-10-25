@@ -41,6 +41,9 @@ spec:
               mountPath: /dev/ttyUSB0
           securityContext:
             privilege: true
+          env:
+            - name: DISABLE_JEMALLOC
+              value: "true"
         - image: mysql:8.1.0 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
           name: mysql
           env:
@@ -49,8 +52,6 @@ spec:
                 secretKeyRef:
                   name: mysql-recorder-pass
                   key: password
-            - name: DISABLE_JEMALLOC
-              value: true
           volumeMounts:
             - name: ha-mysql
               mountPath: /var/lib/mysql
