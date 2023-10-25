@@ -16,6 +16,10 @@ spec:
         app: homeassistant
     spec:
       volumes:
+        - name: usb
+          hostPath:
+            path: /dev/ttyUSB0
+            #type: CharDevice
         - name: ha-storage
           persistentVolumeClaim:
             claimName: ha-storage
@@ -33,6 +37,8 @@ spec:
               mountPath: /config
             - name: dbus
               mountPath: /run/dbus
+            - name: usb
+              mountPath: /dev/ttyUSB0
           securityContext:
             privilege: true
         - image: mysql:8.1.0 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
