@@ -18,7 +18,7 @@ spec:
       volumes:
         - name: usb
           hostPath:
-            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0
+            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0 
         #    type: CharDevice
         #    readOnly: false
         - name: ha-storage
@@ -27,7 +27,7 @@ spec:
         - name: ha-mysql
           persistentVolumeClaim:
             claimName: ha-mysql
-            #- name: dbus
+        #- name: dbus
           #hostPath:
           #path: /run/dbus
       containers:
@@ -45,7 +45,7 @@ spec:
           env:
             - name: DISABLE_JEMALLOC
               value: "true"
-        - image: mysql:8.2.0 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
+        - image: mysql:8.1.0 # {"$imagepolicy": "flux-system:homeassistant-mysql"}
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
