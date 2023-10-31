@@ -27,17 +27,17 @@ spec:
         - name: ha-mysql
           persistentVolumeClaim:
             claimName: ha-mysql
-        #- name: dbus
-          #hostPath:
-          #path: /run/dbus
+        - name: dbus
+          hostPath:
+          path: /run/dbus
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2023.10.5 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
           volumeMounts:
             - name: ha-storage
               mountPath: /config
-            #- name: dbus
-            #mountPath: /run/dbus
+            - name: dbus
+              mountPath: /run/dbus
             - name: usb
               mountPath: /dev/ttyUSB0
           securityContext:
