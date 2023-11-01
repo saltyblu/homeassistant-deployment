@@ -18,7 +18,7 @@ spec:
       volumes:
         - name: usb
           hostPath:
-            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0 
+            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0
         #    type: CharDevice
         #    readOnly: false
         - name: ha-storage
@@ -31,7 +31,7 @@ spec:
           hostPath:
           path: /run/dbus
       containers:
-        - image: ghcr.io/home-assistant/home-assistant:2023.10.5 # {"$imagepolicy": "flux-system:homeassistant"}
+        - image: ghcr.io/home-assistant/home-assistant:2023.11.0 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
           volumeMounts:
             - name: ha-storage
