@@ -29,7 +29,7 @@ spec:
             claimName: ha-mysql
         - name: dbus
           hostPath:
-          path: /run/dbus
+            path: /run/dbus
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2024.10.1 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant

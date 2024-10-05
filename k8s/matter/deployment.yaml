@@ -9,21 +9,25 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: homeassistant
+      app: matter
   template:
     metadata:
       labels:
-        app: homeassistant
+        app: matter
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/matter: unconfined
     spec:
+      hostNetwork: true
       volumes:
         - name: matter
-          persistentVolumeClaim:
-            claimName: matter
+          hostPath:
+            path: "/opt/data/homeassistant/matter"
+            type: Directory
         - name: dbus
           hostPath:
-          path: /run/dbus
+            path: /run/dbus
       containers:
-        - image: ghcr.io/home-assistant-libs/python-matter-server:stable # {"$imagepolicy": "flux-system:matter"}
+        - image: ghcr.io/home-assistant-libs/python-matter-server:6.5 # {"$imagepolicy": "flux-system:matter"}
           name: matter
           volumeMounts:
             - name: matter
@@ -32,3 +36,5 @@ spec:
               mountPath: /run/dbus
           securityContext:
             privileged: true
+          ports:
+          - containerPort: 5530
