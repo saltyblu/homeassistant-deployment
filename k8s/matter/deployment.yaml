@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: matter
+  name: matter
+  namespace: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      volumes:
+        - name: matter
+          persistentVolumeClaim:
+            claimName: matter
+        - name: dbus
+          hostPath:
+          path: /run/dbus
+      containers:
+        - image: ghcr.io/home-assistant-libs/python-matter-server:stable # {"$imagepolicy": "flux-system:matter"}
+          name: matter
+          volumeMounts:
+            - name: matter
+              mountPath: /data
+            - name: dbus
+              mountPath: /run/dbus
+          securityContext:
+            privileged: true

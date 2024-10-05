@@ -3,3 +3,4 @@ namespace: homeassistant
 
 resources:
   - ../../app
+  - ../../matter
