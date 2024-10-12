@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: z2m
+  name: z2m
+  namespace: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+      #annotations:
+      #  container.apparmor.security.beta.kubernetes.io/matter: unconfined
+    spec:
+      hostNetwork: true
+      volumes:
+        - name: mosquitto-data
+          hostpath:
+            path: "/opt/data/homeassistant/mosquitto/data"
+            type: directory
+        - name: mosquitto-config
+          hostpath:
+            path: "/opt/data/homeassistant/mosquitto/config"
+            type: directory
+      containers:
+        - image: docker.hub/library/eclipse-mosquitto:2.0.19 # {"$imagepolicy": "flux-system:eclipse-mosquitto"}
+          name: mosquitto
+          volumeMounts:
+            - name: mosquitto-data
+              mountPath: /mosquitto/data
+            - name: mosquitto-config
+              mountPath: /mosquitto/config
+          securityContext:
+            privileged: true
+          ports:
+          - containerPort: 1883
+          - containerPort: 9001
