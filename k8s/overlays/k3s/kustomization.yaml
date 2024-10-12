@@ -4,3 +4,4 @@ namespace: homeassistant
 resources:
   - ../../app
   - ../../matter
+  - ../../mosquitto
