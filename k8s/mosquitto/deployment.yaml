@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: z2m
-  name: z2m
+    app: mosquitto
+  name: mosquitto
   namespace: homeassistant
 spec:
   replicas: 1
@@ -20,15 +20,15 @@ spec:
       hostNetwork: true
       volumes:
         - name: mosquitto-data
-          hostpath:
+          hostPath:
             path: "/opt/data/homeassistant/mosquitto/data"
-            type: directory
+            type: Directory
         - name: mosquitto-config
-          hostpath:
+          hostPath:
             path: "/opt/data/homeassistant/mosquitto/config"
-            type: directory
+            type: Directory
       containers:
-        - image: docker.hub/library/eclipse-mosquitto:2.0.19 # {"$imagepolicy": "homeassistant:eclipse-mosquitto"}
+        - image: eclipse-mosquitto:2.0.19 # {"$imagepolicy": "homeassistant:eclipse-mosquitto"}
           name: mosquitto
           volumeMounts:
             - name: mosquitto-data
