@@ -28,7 +28,7 @@ spec:
             path: "/opt/data/homeassistant/mosquitto/config"
             type: directory
       containers:
-        - image: docker.hub/library/eclipse-mosquitto:2.0.19 # {"$imagepolicy": "flux-system:eclipse-mosquitto"}
+        - image: docker.hub/library/eclipse-mosquitto:2.0.19 # {"$imagepolicy": "homeassistant:eclipse-mosquitto"}
           name: mosquitto
           volumeMounts:
             - name: mosquitto-data
