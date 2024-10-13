@@ -2,7 +2,7 @@ kind: Kustomization
 namespace: homeassistant
 
 commonLabels:
-  app.kubernetes.io/name: matter
+  app.kubernetes.io/name: mosquitto
   app.kubernetes.io/part-of: homeassistant
 
 

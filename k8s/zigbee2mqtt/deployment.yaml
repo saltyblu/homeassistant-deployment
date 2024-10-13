@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zigbee2mqtt
+  name: zigbee2mqtt
+  namespace: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zigbee2mqtt
+  template:
+    metadata:
+      labels:
+        app: zigbee2mqtt
+      #annotations:
+      #  container.apparmor.security.beta.kubernetes.io/matter: unconfined
+    spec:
+      hostNetwork: true
+      volumes:
+        - name: zigbee2mqtt-data
+          hostPath:
+            path: "/opt/data/homeassistant/zigbee2mqtt/data"
+            type: Directory
+        - name: udev
+          hostPath:
+            path: /run/udev
+        - name: usb
+          hostPath:
+            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0
+      containers:
+        - image: koenkk/zigbee2mqtt:1.40.2 # {"$imagepolicy": "homeassistant:zigbee2mqtt"}
+          name: zigbee2mqtt
+          env:
+            - name: TZ
+              value: Europe/Berlin
+          volumeMounts:
+            - name: zigbee2mqtt-data
+              mountPath: /app/data
+            - name: udev
+              mountPath: /run/udev
+            - name: usb
+              mountPath: /dev/ttyACM0
+          securityContext:
+            privileged: true
+
+        

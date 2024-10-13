@@ -1,0 +1,18 @@
+---
+
+kind: Kustomization
+namespace: homeassistant
+apiVersion: kustomize.config.k8s.io/v1beta1
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/name: zigbee2mqtt
+    app.kubernetes.io/part-of: homeassistant
+
+
+
+resources:
+- deployment.yaml
+- automation.yaml
+- service.yaml
+- ingress.yaml
