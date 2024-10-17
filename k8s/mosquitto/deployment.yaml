@@ -17,7 +17,7 @@ spec:
       #annotations:
       #  container.apparmor.security.beta.kubernetes.io/matter: unconfined
     spec:
-      hostNetwork: true
+      #hostNetwork: true
       volumes:
         - name: mosquitto-data
           hostPath:
@@ -38,5 +38,9 @@ spec:
           securityContext:
             privileged: true
           ports:
-          - containerPort: 1883
-          - containerPort: 9001
+            - name: mqtt
+              containerPort: 1883
+              protocol: TCP
+          #ports:
+          #- containerPort: 1883
+          #- containerPort: 9001

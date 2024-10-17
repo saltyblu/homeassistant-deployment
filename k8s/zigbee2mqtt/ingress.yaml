@@ -4,19 +4,16 @@ kind: Ingress
 metadata:
   name: zigbee2mqtt
   namespace: homeassistant
-  annotations:
-    kubernetes.io/ingress.class: "traefik"
-    ingress.kubernetes.io/ssl-redirect: "false"
-
 spec:
+  ingressClassName: traefik
   rules:
-    - host: z2m.fritz.box
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: zigbee2mqtt
-                port:
-                  name: http
+  - host: z2m.fritz.box
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: zigbee2mqtt
+            port:
+              number: 8080

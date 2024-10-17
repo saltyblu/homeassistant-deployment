@@ -14,10 +14,7 @@ spec:
     metadata:
       labels:
         app: zigbee2mqtt
-      #annotations:
-      #  container.apparmor.security.beta.kubernetes.io/matter: unconfined
     spec:
-      hostNetwork: true
       volumes:
         - name: zigbee2mqtt-data
           hostPath:
@@ -37,9 +34,9 @@ spec:
               mountPath: /app/data
             - name: udev
               mountPath: /run/udev
-            - name: usb
-              mountPath: /dev/ttyACM0
           securityContext:
             privileged: true
-
-        
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
