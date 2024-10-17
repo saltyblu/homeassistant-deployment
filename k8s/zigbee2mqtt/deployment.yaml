@@ -26,9 +26,6 @@ spec:
         - name: udev
           hostPath:
             path: /run/udev
-        - name: usb
-          hostPath:
-            path: /dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_566c90e91e97ed118a1ac298a7669f5d-if00-port0
       containers:
         - image: koenkk/zigbee2mqtt:1.40.2 # {"$imagepolicy": "homeassistant:zigbee2mqtt"}
           name: zigbee2mqtt
