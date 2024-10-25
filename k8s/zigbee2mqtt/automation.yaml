@@ -4,7 +4,7 @@ kind: ImageRepository
 metadata:
   name: zigbee2mqtt
 spec:
-  image: zigbee2mqtt
+  image: koenkk/zigbee2mqtt
   interval: 4h0m
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
