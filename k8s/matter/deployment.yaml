@@ -27,7 +27,7 @@ spec:
           hostPath:
             path: /run/dbus
       containers:
-        - image: ghcr.io/home-assistant-libs/python-matter-server:6.5 # {"$imagepolicy": "homeassistant:matter"}
+        - image: ghcr.io/home-assistant-libs/python-matter-server:6.6.0 # {"$imagepolicy": "homeassistant:matter"}
           name: matter
           volumeMounts:
             - name: matter
@@ -37,4 +37,4 @@ spec:
           securityContext:
             privileged: true
           ports:
-          - containerPort: 5530
+            - containerPort: 5530
