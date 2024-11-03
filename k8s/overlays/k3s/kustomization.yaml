@@ -5,3 +5,4 @@ resources:
   - ../../homeassistant
   - ../../matter
   - ../../mosquitto
+  - ../../zigbee2mqtt

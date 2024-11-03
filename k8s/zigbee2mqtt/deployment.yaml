@@ -18,7 +18,7 @@ spec:
       volumes:
         - name: zigbee2mqtt-data
           hostPath:
-            path: "/opt/data/homeassistant/zigbee2mqtt/data"
+            path: "/opt/no_raid_data/homeassistant/zigbee2mqtt/data"
             type: Directory
         - name: udev
           hostPath:
@@ -32,8 +32,8 @@ spec:
           volumeMounts:
             - name: zigbee2mqtt-data
               mountPath: /app/data
-            - name: udev
-              mountPath: /run/udev
+            #- name: udev
+            #  mountPath: /run/udev
           securityContext:
             privileged: true
           ports:

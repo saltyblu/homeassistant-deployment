@@ -7,7 +7,6 @@ commonLabels:
 
 
 resources:
-  - pvc.yaml
   - namespace.yaml
   - deployment.yaml
   - service.yaml
