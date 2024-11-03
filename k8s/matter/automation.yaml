@@ -1,0 +1,44 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: matter
+spec:
+  image: ghcr.io/home-assistant-libs/python-matter-server
+  interval: 4h0m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: matter
+spec:
+  imageRepositoryRef:
+    name: matter
+  policy:
+    semver:
+      range: 6.x
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: matter
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: salty-bot@no-reply.com
+        name: Salty Bot
+      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+    push:
+      branch: main
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: homeassistant
+    namespace: flux-system
+  update:
+    path: ./k8s
+    strategy: Setters
