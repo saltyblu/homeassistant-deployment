@@ -24,7 +24,7 @@ spec:
           hostPath:
             path: /run/udev
       containers:
-        - image: koenkk/zigbee2mqtt:1.40.2 # {"$imagepolicy": "homeassistant:zigbee2mqtt"}
+        - image: koenkk/zigbee2mqtt:1.41.0 # {"$imagepolicy": "homeassistant:zigbee2mqtt"}
           name: zigbee2mqtt
           env:
             - name: TZ
@@ -32,8 +32,8 @@ spec:
           volumeMounts:
             - name: zigbee2mqtt-data
               mountPath: /app/data
-            #- name: udev
-            #  mountPath: /run/udev
+              #- name: udev
+              #  mountPath: /run/udev
           securityContext:
             privileged: true
           ports:
