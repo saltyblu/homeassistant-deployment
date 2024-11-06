@@ -25,19 +25,19 @@ spec:
           hostPath:
             path: "/opt/no_raid_data/homeassistant/mysql"
             type: Directory
-        #- name: dbus
-        #  hostPath:
-        #    path: /run/dbus
+            #- name: dbus
+            #  hostPath:
+            #    path: /run/dbus
       containers:
-        - image: ghcr.io/home-assistant/home-assistant:2024.10.4 # {"$imagepolicy": "flux-system:homeassistant"}
+        - image: ghcr.io/home-assistant/home-assistant:2024.11.0 # {"$imagepolicy": "flux-system:homeassistant"}
           name: home-assistant
           volumeMounts:
             - name: ha-storage
               mountPath: /config
-            #- name: dbus
-            #  mountPath: /run/dbus
-            #- name: usb
-            #  mountPath: /dev/ttyUSB0
+              #- name: dbus
+              #  mountPath: /run/dbus
+              #- name: usb
+              #  mountPath: /dev/ttyUSB0
           securityContext:
             privileged: true
           env:
@@ -46,11 +46,11 @@ spec:
         - image: mysql:8.1.0 # {"$imagepolicy": "flux-system:homeassistant-mysql-no-more"}
           name: mysql
           env:
-            #- name: MYSQL_ROOT_PASSWORD
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: mysql-recorder-pass
-            #      key: password
+          #- name: MYSQL_ROOT_PASSWORD
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: mysql-recorder-pass
+          #      key: password
           volumeMounts:
             - name: ha-mysql
               mountPath: /var/lib/mysql
