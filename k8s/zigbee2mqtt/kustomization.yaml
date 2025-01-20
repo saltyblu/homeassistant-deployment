@@ -9,8 +9,6 @@ labels:
     app.kubernetes.io/name: zigbee2mqtt
     app.kubernetes.io/part-of: homeassistant
 
-
-
 resources:
 - deployment.yaml
 - automation.yaml
