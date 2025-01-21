@@ -8,13 +8,11 @@ metadata:
     kubernetes.io/ingress.class: "traefik"
 
 spec:
-  #ingressClassName: traefik
   rules:
   - host: z2m.fritz.box
     http:
       paths:
       - path: /
-        #pathType: ImplementationSpecific
         pathType: Prefix
         backend:
           service:
