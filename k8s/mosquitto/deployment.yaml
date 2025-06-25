@@ -21,11 +21,11 @@ spec:
       volumes:
         - name: mosquitto-data
           hostPath:
-            path: "/opt/no_raid_data/homeassistant/mosquitto/data"
+            path: "/data/homeassistant/mosquitto/data"
             type: Directory
         - name: mosquitto-config
           hostPath:
-            path: "/opt/no_raid_data/homeassistant/mosquitto/config"
+            path: "/data/homeassistant/mosquitto/config"
             type: Directory
       containers:
         - image: eclipse-mosquitto:2.0.20 # {"$imagepolicy": "homeassistant:mosquitto"}

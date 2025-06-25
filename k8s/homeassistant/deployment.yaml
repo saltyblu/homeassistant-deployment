@@ -19,11 +19,11 @@ spec:
         - name: matter
         - name: ha-storage
           hostPath:
-            path: "/opt/no_raid_data/homeassistant/storage"
+            path: "/data/homeassistant/storage"
             type: Directory
         - name: ha-mysql
           hostPath:
-            path: "/opt/no_raid_data/homeassistant/mysql"
+            path: "/data/homeassistant/mysql"
             type: Directory
             #- name: dbus
             #  hostPath:

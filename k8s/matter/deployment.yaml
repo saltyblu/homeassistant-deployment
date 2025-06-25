@@ -21,7 +21,7 @@ spec:
       volumes:
         - name: matter
           hostPath:
-            path: "/opt/no_raid_data/homeassistant/matter"
+            path: "/data/homeassistant/matter"
             type: Directory
         - name: dbus
           hostPath:
