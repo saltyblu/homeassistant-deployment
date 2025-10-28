@@ -20,14 +20,14 @@ spec:
           name: govee2mqtt
           env:
             - name: GOVEE_PASSWORD
-              value-from:
+              valueFrom:
                 secretKeyRef:
-                  name: govee2mqtt-secret
+                  name: govee2mqtt-secrets
                   key: password
             - name: GOVEE_EMAIL
-              value-from:
+              valueFrom:
                 secretKeyRef:
-                  name: govee2mqtt-secret
+                  name: govee2mqtt-secrets
                   key: email
             - name: GOVEE_MQTT_HOST
               value: mosquitto
