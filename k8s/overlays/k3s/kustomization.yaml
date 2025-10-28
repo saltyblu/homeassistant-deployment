@@ -6,3 +6,4 @@ resources:
   - ../../matter
   - ../../mosquitto
   - ../../zigbee2mqtt
+  - ../../govee2mqtt

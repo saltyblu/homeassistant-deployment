@@ -1,0 +1,12 @@
+---
+
+kind: Kustomization
+namespace: homeassistant
+
+commonLabels:
+  app.kubernetes.io/name: govee2mqtt
+  app.kubernetes.io/part-of: homeassistant
+
+resources:
+- deployment.yaml
+- secrets-sops.yaml
