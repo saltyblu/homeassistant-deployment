@@ -1,0 +1,46 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: govee2mqtt
+spec:
+  image: ghcr.io/wez/govee2mqtt
+  interval: 4h0m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: govee2mqtt
+spec:
+  imageRepositoryRef:
+    name: govee2mqtt
+  filterTags:
+    pattern: '^\d{4}[.\-]\d{2}[.\-]\d{2}-[0-9a-f]+$'
+  policy:
+    alphabetical:
+      order: desc
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: govee2mqtt
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: salty-bot@no-reply.com
+        name: Salty Bot
+      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+    push:
+      branch: main
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: homeassistant
+    namespace: flux-system
+  update:
+    path: ./k8s
+    strategy: Setters

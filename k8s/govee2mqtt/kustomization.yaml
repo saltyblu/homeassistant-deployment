@@ -10,3 +10,4 @@ commonLabels:
 resources:
 - deployment.yaml
 - secrets-sops.yaml
+- automation.yaml
