@@ -31,7 +31,7 @@ spec:
       author:
         email: salty-bot@no-reply.com
         name: Salty Bot
-      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+      messageTemplate: '{{range .Changed.Changes}}{{println .}}{{end}}'
     push:
       branch: main
   interval: 1m0s

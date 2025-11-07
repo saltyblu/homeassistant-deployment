@@ -17,7 +17,7 @@ spec:
   filterTags:
     # Tags wie 2025.11.07-d5887028
     pattern: '^(?P<y>\d{4})\.(?P<m>\d{2})\.(?P<d>\d{2})-[0-9A-Fa-f]+$'
-    extract: '$y$m$d'     # ergibt z. B. 20251107 (numerisch)
+    extract: '$y$m$d' # ergibt z. B. 20251107 (numerisch)
   policy:
     numerical:
       order: asc
@@ -35,7 +35,7 @@ spec:
       author:
         email: salty-bot@no-reply.com
         name: Salty Bot
-      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+      messageTemplate: '{{range .Changed.Changes}}{{println .}}{{end}}'
     push:
       branch: main
   interval: 1m0s
