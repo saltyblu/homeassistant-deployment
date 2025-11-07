@@ -29,6 +29,11 @@ spec:
                 secretKeyRef:
                   name: govee2mqtt-secrets
                   key: email
+            - name: GOVEE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: govee2mqtt-secrets
+                  key: apikey
             - name: GOVEE_MQTT_HOST
               value: mosquitto
             - name: GOVEE_TEMPERATURE_SCALE
