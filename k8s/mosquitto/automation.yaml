@@ -1,5 +1,5 @@
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
 kind: ImageRepository
 metadata:
   name: mosquitto
@@ -7,7 +7,7 @@ spec:
   image: eclipse-mosquitto
   interval: 4h0m
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
 kind: ImagePolicy
 metadata:
   name: mosquitto
@@ -18,7 +18,7 @@ spec:
     semver:
       range: 2.x.x
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
 kind: ImageUpdateAutomation
 metadata:
   name: mosquitto
