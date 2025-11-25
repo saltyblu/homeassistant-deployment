@@ -16,7 +16,7 @@ spec:
         app: govee2mqtt
     spec:
       containers:
-        - image: ghcr.io/wez/govee2mqtt:2025.11.22-d402185a # {"$imagepolicy": "homeassistant:govee2mqtt"}
+        - image: ghcr.io/wez/govee2mqtt:2025.11.25-60a39bcc # {"$imagepolicy": "homeassistant:govee2mqtt"}
           name: govee2mqtt
           env:
             - name: GOVEE_PASSWORD
