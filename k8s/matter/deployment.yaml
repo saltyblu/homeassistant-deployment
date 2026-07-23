@@ -14,8 +14,6 @@ spec:
     metadata:
       labels:
         app: matter
-      annotations:
-        container.apparmor.security.beta.kubernetes.io/matter: unconfined
     spec:
       hostNetwork: true
       volumes:
@@ -36,5 +34,7 @@ spec:
               mountPath: /run/dbus
           securityContext:
             privileged: true
+            appArmorProfile:
+              type: Unconfined
           ports:
             - containerPort: 5530
