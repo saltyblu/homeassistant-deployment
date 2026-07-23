@@ -38,7 +38,7 @@ spec:
       messageTemplate: '{{range .Changed.Changes}}{{println .}}{{end}}'
     push:
       branch: main
-  interval: 1m0s
+  interval: 24h0m
   sourceRef:
     kind: GitRepository
     name: homeassistant
