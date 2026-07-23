@@ -7,6 +7,12 @@ metadata:
   namespace: homeassistant
 spec:
   replicas: 1
+  # hostNetwork: true means the new pod can't schedule alongside the old one
+  # during a rolling update - both want the exact same host ports on this
+  # single-node cluster. Recreate accepts a brief gap instead of getting
+  # stuck (found via a real stuck rollout after the AppArmor field change).
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: matter
