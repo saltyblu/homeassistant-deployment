@@ -1,0 +1,44 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: ha-mcp
+spec:
+  image: ghcr.io/homeassistant-ai/ha-mcp
+  interval: 4h0m
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: ha-mcp
+spec:
+  imageRepositoryRef:
+    name: ha-mcp
+  policy:
+    semver:
+      range: 7.x.x
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageUpdateAutomation
+metadata:
+  name: ha-mcp
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: salty-bot@no-reply.com
+        name: Salty Bot
+      messageTemplate: '{{range .Changed.Changes}}{{println .}}{{end}}'
+    push:
+      branch: main
+  interval: 24h0m
+  sourceRef:
+    kind: GitRepository
+    name: homeassistant
+    namespace: flux-system
+  update:
+    path: ./k8s
+    strategy: Setters

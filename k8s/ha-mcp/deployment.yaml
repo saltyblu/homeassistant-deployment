@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ha-mcp
+  name: ha-mcp
+  namespace: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ha-mcp
+  template:
+    metadata:
+      labels:
+        app: ha-mcp
+    spec:
+      containers:
+        - image: ghcr.io/homeassistant-ai/ha-mcp:7.14.2 # {"$imagepolicy": "homeassistant:ha-mcp"}
+          name: ha-mcp
+          env:
+            - name: HOMEASSISTANT_URL
+              value: http://homeassistant:8123
+            - name: HOMEASSISTANT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ha-mcp-secrets
+                  key: token
+            - name: ENABLE_WEBSOCKET
+              value: "true"
+          ports:
+            - name: http
+              containerPort: 8086
+              protocol: TCP
