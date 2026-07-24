@@ -19,6 +19,11 @@ spec:
       containers:
         - image: ghcr.io/homeassistant-ai/ha-mcp:7.14.2 # {"$imagepolicy": "homeassistant:ha-mcp"}
           name: ha-mcp
+          # Image's default CMD runs stdio mode (fastmcp.json) - the
+          # ha-mcp-web console script (ha_mcp.__main__:main_web) is what
+          # actually serves HTTP on :8086/mcp, per the Dockerfile's own
+          # "For HTTP mode: docker run ... IMAGE ha-mcp-web" comment.
+          command: ["ha-mcp-web"]
           env:
             - name: HOMEASSISTANT_URL
               value: http://homeassistant:8123
