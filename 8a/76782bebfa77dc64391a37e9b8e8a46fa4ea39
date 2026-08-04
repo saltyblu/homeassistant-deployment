@@ -1,0 +1,21 @@
+k8s/zigbee2mqtt/automation.yaml
+  s_e8f22d119d44f2::t_3faf39fbf4d872 19-24
+k8s/zigbee2mqtt/deployment.yaml
+  s_e8f22d119d44f2::t_95dd48f5e1a951 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "8a76782bebfa77dc64391a37e9b8e8a46fa4ea39",
+  "prompts": {},
+  "sessions": {
+    "s_e8f22d119d44f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "97c862a5-c350-4660-aa4f-ae95c01a89ec",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Salty Blu <v.schmitz01@gmail.com>"
+    }
+  }
+}
