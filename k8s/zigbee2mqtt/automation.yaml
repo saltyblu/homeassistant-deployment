@@ -16,7 +16,12 @@ spec:
     name: zigbee2mqtt
   policy:
     semver:
-      range: 1.x.x
+      # Deliberately bumped 1.x.x -> 2.x.x by hand (2026-08-04), not by the
+      # image-update bot - a major version bump needed the migration/
+      # breaking-changes review documented in knowledge-base
+      # services/Zigbee2MQTT.md first. Within 2.x, patch/minor bumps are
+      # safe to automate again (z2m's own migration system handles those).
+      range: 2.x.x
 ---
 apiVersion: image.toolkit.fluxcd.io/v1 #beta2
 kind: ImageUpdateAutomation
