@@ -1,0 +1,45 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
+kind: ImageRepository
+metadata:
+  name: esphome
+spec:
+  image: ghcr.io/esphome/esphome
+  interval: 4h0m
+---
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
+kind: ImagePolicy
+metadata:
+  name: esphome
+spec:
+  imageRepositoryRef:
+    name: esphome
+  policy:
+    semver:
+      # CalVer (YYYY.M.P) - stable releases only, beta/dev tags are excluded
+      range: ">=2026.10.0"
+---
+apiVersion: image.toolkit.fluxcd.io/v1 #beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: esphome
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: salty-bot@no-reply.com
+        name: Salty Bot
+      messageTemplate: '{{range .Changed.Changes}}{{println .}}{{end}}'
+    push:
+      branch: main
+  interval: 24h0m
+  sourceRef:
+    kind: GitRepository
+    name: homeassistant
+    namespace: flux-system
+  update:
+    path: ./k8s
+    strategy: Setters

@@ -8,3 +8,4 @@ resources:
   - ../../zigbee2mqtt
   - ../../govee2mqtt
   - ../../ha-mcp
+  - ../../esphome

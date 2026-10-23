@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: esphome
+  name: esphome
+  namespace: homeassistant
+spec:
+  replicas: 1
+  # hostNetwork (needed for mDNS device discovery + OTA) blocks rolling
+  # updates on this single-node cluster - same reasoning as matter.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: esphome
+  template:
+    metadata:
+      labels:
+        app: esphome
+    spec:
+      hostNetwork: true
+      volumes:
+        - name: esphome
+          hostPath:
+            path: "/data/homeassistant/esphome"
+            type: DirectoryOrCreate
+      containers:
+        - image: ghcr.io/esphome/esphome:2026.10.0 # {"$imagepolicy": "homeassistant:esphome"}
+          name: esphome
+          env:
+            - name: TZ
+              value: Europe/Berlin
+            # Keep PlatformIO toolchains on the host volume so they are not
+            # re-downloaded (~1 GB) after every pod restart.
+            - name: PLATFORMIO_CORE_DIR
+              value: /config/.platformio
+          volumeMounts:
+            - name: esphome
+              mountPath: /config
+          ports:
+            - name: http
+              containerPort: 6052
