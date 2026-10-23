@@ -1,0 +1,24 @@
+k8s/esphome/ingress.yaml
+  s_3f9c3ba88692fe::t_a20812701a7a4f 5-25,30,32
+  s_3f9c3ba88692fe::t_9ef8e50c27d7f3 4
+k8s/esphome/middleware.yaml
+  s_3f9c3ba88692fe::t_2cb77182584af8 1-10
+k8s/esphome/kustomization.yaml
+  s_3f9c3ba88692fe::t_fe6570c9bd7161 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "852b65d19aeabb91b42f8eae3223d4624de65502",
+  "prompts": {},
+  "sessions": {
+    "s_3f9c3ba88692fe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8b4dcb8b-9235-4e3b-a240-b9bdf4bc9703",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Salty Blu <v.schmitz01@gmail.com>"
+    }
+  }
+}
