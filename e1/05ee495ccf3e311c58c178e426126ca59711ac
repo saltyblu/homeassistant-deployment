@@ -1,0 +1,29 @@
+k8s/esphome/service.yaml
+  s_3f9c3ba88692fe::t_baa59730d6e9c7 1-14
+k8s/esphome/ingress.yaml
+  s_3f9c3ba88692fe::t_07d8a6c36c34e9 1-21
+k8s/esphome/kustomization.yaml
+  s_3f9c3ba88692fe::t_30cdcf4a341333 1-13
+k8s/esphome/deployment.yaml
+  s_3f9c3ba88692fe::t_8a83cdc92b7854 1-43
+k8s/esphome/automation.yaml
+  s_3f9c3ba88692fe::t_f3ed1e9c3aee4f 1-45
+k8s/overlays/k3s/kustomization.yaml
+  s_3f9c3ba88692fe::t_b59f072a1c0450 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e105ee495ccf3e311c58c178e426126ca59711ac",
+  "prompts": {},
+  "sessions": {
+    "s_3f9c3ba88692fe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8b4dcb8b-9235-4e3b-a240-b9bdf4bc9703",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Salty Blu <v.schmitz01@gmail.com>"
+    }
+  }
+}
