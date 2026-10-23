@@ -11,3 +11,4 @@ resources:
 - automation.yaml
 - service.yaml
 - ingress.yaml
+- middleware.yaml

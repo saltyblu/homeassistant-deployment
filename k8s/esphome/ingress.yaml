@@ -2,12 +2,34 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: esphome-http-redirect
+  namespace: homeassistant
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: "web"
+    traefik.ingress.kubernetes.io/router.middlewares: "homeassistant-esphome-redirect-https@kubernetescrd"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: esphome.fritz.box
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: esphome
+            port:
+              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: esphome
   namespace: homeassistant
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
+  ingressClassName: traefik
   rules:
   - host: esphome.fritz.box
     http:
