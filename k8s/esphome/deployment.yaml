@@ -26,7 +26,7 @@ spec:
             path: "/data/homeassistant/esphome"
             type: DirectoryOrCreate
       containers:
-        - image: ghcr.io/esphome/esphome:2026.10.0 # {"$imagepolicy": "homeassistant:esphome"}
+        - image: ghcr.io/esphome/esphome:2026.10.1 # {"$imagepolicy": "homeassistant:esphome"}
           name: esphome
           env:
             - name: TZ
