@@ -1,0 +1,19 @@
+k8s/homeassistant/ingress.yaml
+  s_426fcbf41b0d93::t_cf1bb02679901e 53-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d2f8bad350590655894b4c3b3c2afbac247c8141",
+  "prompts": {},
+  "sessions": {
+    "s_426fcbf41b0d93": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7176d45d-e35a-4cfd-8183-09d2f14c43fd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Salty Blu <v.schmitz01@gmail.com>"
+    }
+  }
+}
